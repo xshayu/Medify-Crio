@@ -13,9 +13,9 @@ Uses a mock API and localStorage to simulate actual booking.
     1. Creating banner [x]
     2. Creating app-download section [x]
     3. Creating footer [x]
-3. Setting up Location Searching Field []
-    1. Creating LocationSetter component []
-    2. Using component in "/hospitals" page to fetch hospitals []
+3. Setting up Location Searching Field [x]
+    1. Creating LocationSetter component [x]
+    2. Using component in "/hospitals" page to fetch hospitals [x]
 4. Setting up booking functionality []
 5. Final CSS implementation
     1. Home page
