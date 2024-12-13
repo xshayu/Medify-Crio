@@ -17,6 +17,9 @@ Uses a mock API and localStorage to simulate actual booking.
     1. Creating LocationSetter component [x]
     2. Using component in "/hospitals" page to fetch hospitals [x]
 4. Setting up booking functionality []
+    1. Bookings set/get/all logic [x]
+    2. Booking Slots component []
+    3. Booking page []
 5. Final CSS implementation
     1. Home page
     2. Hospitals page
