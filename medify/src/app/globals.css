@@ -46,6 +46,7 @@ body {
     padding: 13px 20px;
     border-radius: 8px;
     white-space: nowrap;
+    cursor: pointer;
   }
 }
 
