@@ -7,6 +7,11 @@
   --foreground: #171717;
   --primary: #2AA7FF;
   --secondary: #1B3C74;
+  --app-nav-height: 62px;
+
+  @screen md {
+    --app-nav-height: 96px;
+  }
 }
 
 body {
@@ -26,6 +31,10 @@ body {
     line-height: 67px;
     font-weight: 600;
     color: var(--secondary);
+  }
+
+  .section-x-padding {
+    @apply px-3 md:px-[135px];
   }
 
   .btn {

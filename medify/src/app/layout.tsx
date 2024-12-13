@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
-import "./globals.css";
 import type { CSSProperties } from 'react';
+import { Poppins } from "next/font/google";
+import Link from 'next/link';
+import "./globals.css";
 import ClientForm from '@/components/ClientForm';
+import AppNavHeader from "@/components/AppNav";
 
 const PoppinsFont = Poppins({
   weight: ['400', '500', '600', '700'],
@@ -108,15 +110,20 @@ export default function RootLayout({
     2: ['Orthology', 'Neurology', 'Dental Care', 'Opthalmology', 'Cardiology']
   };
 
+
+
   return (
     <html lang="en">
       <body
         className={PoppinsFont.className}
+        style={{ position: 'relative' }}
       >
 
         <div className="text-center bg-primary text-white h-[40px] text-[14px] hidden md:flex items-center justify-center"> {/* Hidden in mobile because text is too long */}
           The health and well-being of our patients and their health care team will always be our priority, so we follow the best practices for cleanliness.
         </div>
+
+        <AppNavHeader />
 
         {children}
 
@@ -163,10 +170,12 @@ export default function RootLayout({
           </div>
         </section>
 
-        <footer className="bg-secondary text-white px-3 py-3 md:px-32 md:py-7">
+        <footer className="bg-secondary text-white section-x-padding py-3 md:py-7">
           <div className="flex flex-col md:flex-row md:justify-between md:py-7">
             <div className="flex flex-col justify-between h-auto">
-              <img src="/medifyLogo.svg" alt="Medify Logo" style={{height: '36px', width: 'fit-content'}} />
+              <Link href="/">
+                <img src="/medifyLogo.svg" alt="Medify Logo" style={{height: '36px', width: 'fit-content'}} />
+              </Link>
               <div className="flex gap-4 mt-4"> {/* Margin's only relevant in mobile */}
                 <SocialIcons />
               </div>
