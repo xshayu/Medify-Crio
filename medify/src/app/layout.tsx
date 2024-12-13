@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import type { CSSProperties, FormEvent } from 'react';
+import type { CSSProperties } from 'react';
 import ClientForm from '@/components/ClientForm';
 
 const PoppinsFont = Poppins({
@@ -66,11 +66,47 @@ function MobileAppPreview({ style }: { style: CSSProperties }) {
   )
 };
 
+function SocialIcons() {
+  const SOCIALS = ['facebook', 'twitter', 'youtube', 'pintrest'];
+
+  return (
+    <>
+      {
+        SOCIALS.map((social, key) => (
+          <a href="#" className="flex items-center justify-center h-[35.2px] w-[35.2px] bg-white rounded-full" key={key}>
+            <img src={`/${social}.svg`} alt={social} />
+          </a>
+        ))
+      }
+    </>
+  )
+};
+
+function FooterLinks({ links, keySuffix = '-' }: { links: string[], keySuffix?: string }) {
+  return (
+    <ul className="pr-10">
+      {
+        links.map((linkName, key) => (
+          <li className="flex items-center gap-3 mt-[10.5px]" key={key + keySuffix}>
+            <img src="/footerArrow.svg" alt="footer arrow" />
+            <a href="#" className="text-base leading-7">{linkName}</a>
+          </li>
+        ))
+      }
+    </ul>
+  )
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const FOOTER_LINKS = {
+    1: ['About Us', 'Our Pricing', 'Our Gallery', 'Appointments', 'Privacy Policy'],
+    2: ['Orthology', 'Neurology', 'Dental Care', 'Opthalmology', 'Cardiology']
+  };
 
   return (
     <html lang="en">
@@ -126,6 +162,24 @@ export default function RootLayout({
             </div>
           </div>
         </section>
+
+        <footer className="bg-secondary text-white px-3 py-3 md:px-32 md:py-7">
+          <div className="flex flex-col md:flex-row md:justify-between md:py-7">
+            <div className="flex flex-col justify-between h-auto">
+              <img src="/medifyLogo.svg" alt="Medify Logo" style={{height: '36px', width: 'fit-content'}} />
+              <div className="flex gap-4 mt-4"> {/* Margin's only relevant in mobile */}
+                <SocialIcons />
+              </div>
+            </div>
+            <FooterLinks links={FOOTER_LINKS['1']} />
+            <FooterLinks links={FOOTER_LINKS['2']} />
+            <FooterLinks links={FOOTER_LINKS['1']} keySuffix="--" />
+          </div>
+          <hr className="border-t-[#ffffff10] my-8" />
+          <div className="text-center md:text-left leading-7">
+            Copyright ©2023 Surya Nursing Home.com. All Rights Reserved
+          </div>
+        </footer>
 
       </body>
     </html>
