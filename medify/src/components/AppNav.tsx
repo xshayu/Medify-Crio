@@ -7,8 +7,6 @@ export default function AppNavHeader() {
     const path = usePathname();
     const LINK_NAMES = ['Find Doctors', 'Hospitals', 'Medicines', 'Surgeries', 'Software for Provider', 'Facilities'];
 
-    console.log({path});
-
     return (
         <nav className={`h-[--app-nav-height] absolute w-full section-x-padding flex justify-between items-center ${path == '/' ? '' : 'bg-white'}`}>
             <Link href="/">

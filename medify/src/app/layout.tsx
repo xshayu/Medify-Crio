@@ -5,6 +5,7 @@ import Link from 'next/link';
 import "./globals.css";
 import ClientForm from '@/components/ClientForm';
 import AppNavHeader from "@/components/AppNav";
+import ArrowIcon from "@/components/ArrowIcon";
 
 const PoppinsFont = Poppins({
   weight: ['400', '500', '600', '700'],
@@ -90,7 +91,7 @@ function FooterLinks({ links, keySuffix = '-' }: { links: string[], keySuffix?: 
       {
         links.map((linkName, key) => (
           <li className="flex items-center gap-3 mt-[10.5px]" key={key + keySuffix}>
-            <img src="/footerArrow.svg" alt="footer arrow" />
+            <ArrowIcon />
             <a href="#" className="text-base leading-7">{linkName}</a>
           </li>
         ))

@@ -2,9 +2,10 @@
 
 import LocationSetterForm from "@/components/LocationSetter";
 import HospitalCard from "@/components/HospitalCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
 import { fetchHospitals } from "./utils";
+import { MyBookings } from "@/helpers";
 import type { Hospital } from "@/models";
 
 interface Props {
@@ -14,6 +15,8 @@ interface Props {
 }
 
 export function HospitalList({ initialHospitals, initialState, initialCity }: Props) {
+    'use client';
+
     const router = useRouter();
     const [location, setLocation] = useState({ 
         state: initialState, 
@@ -21,6 +24,13 @@ export function HospitalList({ initialHospitals, initialState, initialCity }: Pr
     });
     const [listLoading, setListLoading] = useState(false);
     const [list, setList] = useState<Hospital[]>(initialHospitals);
+    const [bookingIds, setBookingIds] = useState<Set<string>>(new Set());
+
+    useEffect(() => {
+        const allBookings = MyBookings().all();
+        setBookingIds(new Set(allBookings.map(b => b._id)) as Set<string>);
+    }, []);
+    
 
     async function clientFetchHospitals({ city, state }: { city: string, state: string }) {
         setListLoading(true);
@@ -48,7 +58,7 @@ export function HospitalList({ initialHospitals, initialState, initialCity }: Pr
             )}
             <div className="flex flex-col gap-2">
                 {list.map((hospital, index) => (
-                <HospitalCard key={index} info={hospital} />
+                    <HospitalCard key={index} info={hospital} allBookingIds={bookingIds} />
                 ))}
             </div>
         </>

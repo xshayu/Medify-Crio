@@ -18,12 +18,12 @@ Uses a mock API and localStorage to simulate actual booking.
     2. Using component in "/hospitals" page to fetch hospitals [x]
 4. Setting up booking functionality []
     1. Bookings set/get/all logic [x]
-    2. Booking Slots component []
-    3. Booking page []
-5. Final CSS implementation
-    1. Home page
-    2. Hospitals page
-    3. Hospital Card
+    2. Booking Slots component [x]
+    3. Booking page [x]
+5. Final CSS implementation []
+    1. Home page []
+    2. Hospitals page []
+    3. Hospital Card []
 
 ### Stretch Goals
 1. Replace all <img /> tags with <Image />
