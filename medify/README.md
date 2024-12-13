@@ -1,12 +1,3 @@
-# Crio's Medify Takehome Frontend Assignment
-
-Done by: Ayush Wardhan. Check out https://github.com/xylarshayu for my actual github.
-
-This is a demo app for booking appointments at clinics/hospitals.
-Uses a mock API and localStorage to simulate actual booking.
-
----
-
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
