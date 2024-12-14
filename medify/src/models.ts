@@ -14,5 +14,6 @@ export interface Booking extends Hospital {
 
 export interface HospitalCardProps {
     info: Hospital | Booking;
-    allBookingIds?: Set<string>
+    allBookingIds?: Set<string>;
+    showBookings?: boolean;
 };

@@ -16,12 +16,11 @@ export default async function HospitalsPage({ searchParams }: { searchParams: { 
 
   return (
     <>
-      <section style={{paddingTop: 'var(--app-nav-height)'}}>
-        <h1>Hospitals</h1>
-        <Suspense fallback={<p>Loading hospitals...</p>}>
-          <HospitalList initialHospitals={initialHospitals} initialState={state || ''} initialCity={city || ''} />
-        </Suspense>
-      </section>
+      <Suspense fallback={
+          <h1 className="text-center">Loading Hospitals...</h1>
+      }>
+        <HospitalList initialHospitals={initialHospitals} initialState={state || ''} initialCity={city || ''} />
+      </Suspense>
       <FaqSection />
     </>
   )

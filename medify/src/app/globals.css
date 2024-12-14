@@ -10,6 +10,7 @@
   --app-nav-height: 62px;
   --btn-padding-x: 8px;
   --btn-padding-y: 8px;
+  --hospital-card-height: 269px;
   @screen md {
     --app-nav-height: 96px;
     --btn-padding-x: 20px;
@@ -101,6 +102,11 @@ body {
     }
   }
 
+  #hospitalNavSection {
+    padding-top: calc(var(--app-nav-height) * 2);
+    background: linear-gradient(91.75deg, #2AA7FF 1.4%, #0C8CE6 100.57%);
+  }
+
   .section-heading {
     font-size: 24px;
     line-height: 1.4;
@@ -160,6 +166,25 @@ body {
 
   .gradient-bg {
     background: linear-gradient(81deg, #E7F0FF 9.01%, rgba(232, 241, 255, 0.47) 89.11%);
+  }
+
+  .location-form-shadow {
+    box-shadow: 6px 6px 35px 0px rgba(16, 40, 81, 0.11);
+  }
+
+  .blue-scrollbar {
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--primary);
+    }
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary);
   }
 
 }

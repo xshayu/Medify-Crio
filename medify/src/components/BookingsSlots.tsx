@@ -21,7 +21,8 @@ interface day {
 
 // Basically just generating random time slots for every day
 export default function BookingSlots(props: HospitalCardProps) {
-    const [showBookings, setShowBookings] = useState(false);
+    const { showBookings } = props;
+
     const [dayIdx, setDayIdx] = useState(0); // Can go up to (7 - 1) = 6
     const router = useRouter();
 
@@ -87,22 +88,23 @@ export default function BookingSlots(props: HospitalCardProps) {
     }
 
     return (
-        <div className="flex flex-col w-full">
-            <button className="btn rounded-[4px]" onClick={(e) => setShowBookings(true)}>Book FREE Center Visit</button>
-            {showBookings ?
+        <div className="flex flex-col w-full bg-white rounded-b-[15px]">
+            {showBookings &&
                 <>
+                <hr className="border-[#E8E8F0] mt-2" />
+                <div className="mx-auto h-[5px] w-[44px] rounded-[3.5px] bg-[#00A500]"></div>
                 <div className="flex items-center gap-2">
                     <button onClick={() => setDayIdx(Math.max(0, dayIdx - 1))} className="flex items-center justify-center rounded-full border border-[#E0E0E4]">
                         <ArrowIcon fill="var(--primary)" className="transform -scale-x-100" />
                     </button>
-                    <div className="flex-grow flex overflow-x-scroll">
+                    <div className="flex-grow flex overflow-x-scroll blue-scrollbar">
                         {days.map((d, index) =>
                             <button onClick={() => setDayIdx(index)} className="py-3 text-center basis-1/3 flex-shrink-0" key={index}>
-                                <p style={{lineHeight: '22.4px'}} className={dayIdx == index ? 'font-bold' : ''}>
+                                <p style={{lineHeight: '22.4px'}} className={`text-xs md:text-base ${dayIdx == index ? 'font-bold' : ''}`}>
                                     {dateDisplayName(d.date)}
                                 </p>
-                                <p className="text-[#01A400] text-xs">
-                                    {totalSlots(d)} Slots Available
+                                <p className="text-[#01A400] text-[9px] md:text-xs">
+                                    {totalSlots(d)} Slots <br className="md:hidden" />Available
                                 </p>
                             </button>
                         )}
@@ -114,15 +116,15 @@ export default function BookingSlots(props: HospitalCardProps) {
                 {
                     ['Morning', 'Afternoon', 'Evening'].map((timing, key) => 
                         <div className={`flex ${key == 1 ? 'border-y border-[#F0F0F5]' : ''}`} key={key}>
-                            <span className="text-center py-7 px-12">
+                            <span className="py-7 text-xs md:text-base basis-[80px] md:basis-[140px] pl-2 md:pl-10">
                                 {timing}
                             </span>
-                            <div className="flex items-center gap-3 md:gap-8 overflow-x-auto">
+                            <div className="flex items-center gap-3 md:gap-8 overflow-x-auto flex-grow blue-scrollbar">
                                 {days[dayIdx].slots[timing as 'Morning' | 'Afternoon' | 'Evening'].map((slot, key) =>
                                     <button
                                         onClick={() => createBooking(slot, days[dayIdx].date)}
                                         title="Book Appointment"
-                                        className="border border-primary rounded-[3px] text-primary text-sm py-2 px-3"
+                                        className="border border-primary rounded-[3px] text-primary text-xs md:text-sm py-2 px-3 whitespace-nowrap"
                                         key={key}
                                     >
                                         {slot}
@@ -133,13 +135,6 @@ export default function BookingSlots(props: HospitalCardProps) {
                     )
                 }
                 </>
-                :
-                <div> {/* Likes */}
-                    <span className="py-1 px-2.5 bg-[#00A500] inline-flex items-center gap-1 rounded-[3.5px]">
-                        <img src="/thumbsUp.svg" alt="Likes" />
-                        <span className="text-sm opacity-50">5</span>
-                    </span>
-                </div>
             }
         </div>
     )
