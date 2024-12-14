@@ -98,7 +98,10 @@ export default function BookingSlots(props: HospitalCardProps) {
                 <hr className="border-[#E8E8F0] mt-2" />
                 <div className="mx-auto h-[5px] w-[44px] rounded-[3.5px] bg-[#00A500]"></div>
                 <div className="flex items-center gap-2">
-                    <button onClick={() => setDayIdx(Math.max(0, dayIdx - 1))} className="flex items-center justify-center rounded-full border border-[#E0E0E4]">
+                    <button
+                        onClick={() => setDayIdx(Math.max(0, dayIdx - 1))}
+                        className="flex items-center justify-center rounded-full border border-[#E0E0E4] h-12 aspect-square"
+                    >
                         <ArrowIcon fill="var(--primary)" className="transform -scale-x-100" />
                     </button>
                     <div className="flex-grow flex overflow-x-scroll blue-scrollbar">
@@ -113,14 +116,17 @@ export default function BookingSlots(props: HospitalCardProps) {
                             </button>
                         )}
                     </div>
-                    <button onClick={() => setDayIdx(Math.min(6, dayIdx + 1))} className="flex items-center justify-center rounded-full border border-[#E0E0E4]">
+                    <button
+                        onClick={() => setDayIdx(Math.min(6, dayIdx + 1))}
+                        className="flex items-center justify-center rounded-full border border-[#E0E0E4] h-12 aspect-square"
+                    >
                         <ArrowIcon fill="var(--primary)" />
                     </button>
                 </div>
                 {
                     ['Morning', 'Afternoon', 'Evening'].map((timing, key) => 
                         <div className={`flex ${key == 1 ? 'border-y border-[#F0F0F5]' : ''}`} key={key}>
-                            <span className="py-7 text-xs md:text-base basis-[80px] md:basis-[140px] pl-2 md:pl-10">
+                            <span className="py-7 text-xs md:text-base basis-[80px] md:basis-[140px] pl-2 md:pl-10 flex-shrink-0">
                                 {timing}
                             </span>
                             <div className="flex items-center gap-3 md:gap-8 overflow-x-auto flex-grow blue-scrollbar">

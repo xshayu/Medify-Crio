@@ -172,19 +172,27 @@ body {
     box-shadow: 6px 6px 35px 0px rgba(16, 40, 81, 0.11);
   }
 
-  .blue-scrollbar {
-    &::-webkit-scrollbar {
-      width: 4px;
-      height: 4px;
-    }
-    &::-webkit-scrollbar-track {
-      background: transparent;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: var(--primary);
-    }
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary);
+  .search-form-container {
+    @apply bg-white rounded-[15px] p-6 w-full location-form-shadow;
   }
 
+}
+
+.blue-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.blue-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.blue-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+}
+
+.blue-scrollbar {
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
 }

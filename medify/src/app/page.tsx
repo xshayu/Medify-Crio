@@ -72,10 +72,10 @@ export default function Home() {
           <h1 className="main-heading">Skip the travel! Find Online<br />
             <span className="bigText">Medical <span className="text-primary">Centres</span></span>
           </h1>
-          <p className="text-xl text-[#5C6169]">
+          <p className="text-xl text-[#5C6169] mb-4">
             Connect instantly with a 24x7 specialist or choose to video visit a particular doctor.
           </p>
-          <Link href="/hospitals" className="btn mt-4">Find Centres</Link>
+          <Link href="/hospitals" className="btn">Find Centres</Link>
         </div>
         
         <img id="doctorsImg" src={doctorsImgSrc} alt="Doctors for you" className="w-full md:w-1/2" />
