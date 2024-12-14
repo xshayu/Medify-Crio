@@ -80,7 +80,8 @@ export default function LocationSetterForm({ className = '', grow = false, onSub
     }, []);
 
     useEffect(() => {
-        state ? fetchOptions('City') : setCityOptions([]); // Resetting city in case state is cleared
+        if (state) fetchOptions('City');
+        else setCityOptions([]);  // Resetting city in case state is cleared
     }, [state]);
 
     const onSelectChange = (value: string, type: LocationType = 'State') => {
