@@ -54,7 +54,7 @@ export default function HospitalCard(props: HospitalCardProps) {
                         :
                         <>
                             <p className="text-[#00A500] font-medium">Available Today</p>
-                            <button className="btn rounded-[4px] text-sm" onClick={(e) => setShowBookings(true)}>
+                            <button className="btn rounded-[4px] text-sm" onClick={() => setShowBookings(true)}>
                                 Book FREE Center Visit
                             </button>
                         </>

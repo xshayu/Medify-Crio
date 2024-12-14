@@ -13,14 +13,23 @@ interface LocationSetterFormProps {
 }
 type LocationType = 'State' | 'City';
 
+interface SearchSelectProps {
+    className: string;
+    name: LocationType;
+    disabled?: boolean;
+    options: string[];
+    value: string;
+    callbackOnChange: (val: string, name: LocationType) => (void)
+}
+
 function SearchSelectField({
     className = '',
     name = 'State' as LocationType,
     disabled = false,
     options = [] as string[],
     value = '',
-    callbackOnChange = (val: string, name: LocationType) => {}
-}) {
+    callbackOnChange
+}: SearchSelectProps) {
     return (
         <span className={`${className} bg-[#FAFBFE] border border-[#F0F0F0] rounded-lg px-4 flex items-center`}>
             <SearchIcon fill="#9CA3AF" className="h-[12px] md:h-auto" />

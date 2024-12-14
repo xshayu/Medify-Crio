@@ -5,7 +5,7 @@ import HospitalCard from "@/components/HospitalCard";
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation';
 import { MyBookings, fetchHospitals } from "@/helpers";
-import type { Hospital, Booking } from "@/models";
+import type { Hospital } from "@/models";
 import type { FormEventHandler } from 'react';
 import SearchIcon from "./SearchIcon";
 
@@ -113,7 +113,7 @@ export default function HospitalList({ initialHospitals, initialState = '', init
         </section>
         <section className="section-x-padding pt-[100px]" style={{ background: 'linear-gradient(81deg, #EFF5FE 9.01%, rgba(241, 247, 255, 0.47) 89.11%)' }}>
             <p className="text-2xl mt-6">
-                {!(location.city!! && areBookings) && 'Search for hospitals'}
+                {!(location.city?.length && areBookings) && 'Search for hospitals'}
                 {location.city && location.state && (
                     listLoading ? 
                     'Searching...' : 

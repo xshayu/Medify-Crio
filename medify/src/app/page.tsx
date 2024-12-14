@@ -1,4 +1,3 @@
-import Image from "next/image";
 import LocationSetterForm from "@/components/LocationSetter";
 import FaqSection from "@/components/FaqSection";
 import SwiperCarousel from "@/components/SwiperCarousel";
@@ -31,7 +30,7 @@ export default function Home() {
     'Manage Your Appointments'
   ];
 
-  const NEWS = Array.from({length: 3}, (_, __) => ({
+  const NEWS = Array.from({length: 3}, () => ({
     type: 'Medical',
     date: 'March 31, 2022',
     title: '6 Tips To Protect Your Mental Health When You’re Sick',
