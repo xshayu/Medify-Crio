@@ -23,12 +23,12 @@ function SearchSelectField({
 }) {
     return (
         <span className={`${className} bg-[#FAFBFE] border border-[#F0F0F0] rounded-lg px-4 flex items-center`}>
-            <SearchIcon fill="#9CA3AF" />
+            <SearchIcon fill="#9CA3AF" className="h-[12px] md:h-auto" />
             <select
                 value={value}
                 onChange={(e) => callbackOnChange(e.target.value, name)}
                 name={name.toLocaleLowerCase()}
-                className="w-full text-sm bg-[#FAFBFE] py-[13px]"
+                className="w-full text-xs md:text-sm bg-[#FAFBFE] py-[var(--btn-padding-y)] min-w-[6ch]"
                 disabled={disabled}
             >
                 <option value="" disabled>{name}</option>
@@ -87,18 +87,18 @@ export default function LocationSetterForm({ className = '', grow = false, onSub
     };
 
     return (
-        <div className={`${className} flex items-center gap-5 ${grow ? '' : 'md:gap-[120px]'}`}>
-            <SearchSelectField name='State' value={state} callbackOnChange={onSelectChange} options={stateOptions} className={grow ? 'flex-grow' : ''}  />
-            <SearchSelectField disabled={!state} name='City' value={city} callbackOnChange={onSelectChange} options={cityOptions} className={grow ? 'flex-grow' : ''}  />
+        <div className={`${className} flex items-center gap-1 md:gap-5 ${grow ? '' : 'md:gap-[120px]'}`}>
+            <SearchSelectField name='State' value={state} callbackOnChange={onSelectChange} options={stateOptions} className="flex-grow"  />
+            <SearchSelectField disabled={!state} name='City' value={city} callbackOnChange={onSelectChange} options={cityOptions} className="flex-grow"  />
             {
                 isLink ? 
-                    <Link href={city ? `/hospitals?state=${state}&city=${city}` : '/hospitals'} className="btn flex items-center justify-center gap-[6px]">
-                        <SearchIcon fill='white' />
+                    <Link href={city ? `/hospitals?state=${state}&city=${city}` : '/hospitals'} className="btn flex items-center justify-center gap-0.5 md:gap-[6px] text-xs md:text-base">
+                        <SearchIcon fill='white' className="h-[12px] md:h-auto" />
                         <span>Search</span>
                     </Link>
                     :
-                    <button onClick={onFieldsSubmit} className="btn flex items-center justify-center gap-[6px]">
-                        <SearchIcon fill='white' />
+                    <button onClick={onFieldsSubmit} className="btn flex items-center justify-center gap-0.5 md:gap-[6px] text-xs md:text-base">
+                        <SearchIcon fill='white' className="h-[12px] md:h-auto"  />
                         <span>Search</span>
                     </button>
             }

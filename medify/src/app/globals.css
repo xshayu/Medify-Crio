@@ -8,9 +8,12 @@
   --primary: #2AA7FF;
   --secondary: #1B3C74;
   --app-nav-height: 62px;
-
+  --btn-padding-x: 8px;
+  --btn-padding-y: 8px;
   @screen md {
     --app-nav-height: 96px;
+    --btn-padding-x: 20px;
+    --btn-padding-y: 13px;
   }
 }
 
@@ -43,20 +46,41 @@ body {
     }
   }
 
-  .btn {
-    background: var(--primary);
-    color: white;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: 0.02em;
-    padding: 13px 20px;
-    border-radius: 8px;
-    white-space: nowrap;
-    cursor: pointer;
-  }
 }
 
 @layer components {
+
+  #landingSection {
+    padding-top: calc(var(--app-nav-height) + 15px);
+    padding-bottom: 10vh;
+    --main-heading-txt-size: 16px;
+    --main-heading-txt-size-b: 36px;
+    --main-heading-txt-leading: 42px;
+    @screen md {
+      padding-bottom: 30vh;
+      --main-heading-txt-size: 31px;
+      --main-heading-txt-size-b: 56px;
+      --main-heading-txt-leading: 68px;
+    }
+
+    .main-heading {
+      font-size: var(--main-heading-txt-size);
+      line-height: var(--main-heading-txt-leading);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      .bigText {
+        font-size: var(--main-heading-txt-size-b);
+        font-weight: 700;
+      }
+    }
+
+    #findCentre {
+
+      nav {
+        box-shadow: 6px 6px 35px 0px rgba(16, 40, 81, 0.11);
+      }
+    }
+  }
 
   #faqSection {
     #imageFrame {
@@ -77,7 +101,20 @@ body {
     }
   }
 
-
+  .btn {
+    background: var(--primary);
+    line-height: 1.5;
+    color: white;
+    font-size: 12px;
+    padding: var(--btn-padding-y) var(--btn-padding-x);
+    @screen md {
+      font-size: 16px;
+    }
+    letter-spacing: 0.02em;
+    border-radius: 8px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
 
 }
 

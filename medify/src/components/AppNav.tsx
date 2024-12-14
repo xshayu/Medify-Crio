@@ -8,7 +8,7 @@ export default function AppNavHeader() {
     const LINK_NAMES = ['Find Doctors', 'Hospitals', 'Medicines', 'Surgeries', 'Software for Provider', 'Facilities'];
 
     return (
-        <nav className={`h-[--app-nav-height] absolute w-full section-x-padding flex justify-between items-center ${path == '/' ? '' : 'bg-white'}`}>
+        <nav className={`h-[--app-nav-height] absolute w-full section-x-padding flex justify-between items-center ${path == '/' ? '' : 'bg-white'} z-10`}>
             <Link href="/">
                 <img src="/medifyLogo.svg" alt="Medify Logo" style={{ height: '27px', width: 'fit-content' }} />
             </Link>
