@@ -29,4 +29,4 @@ Uses a mock API and localStorage to simulate actual booking.
     3. Hospitals page - [x] 
     4. Hospital Card - [x]
     5. Bookings page - [x]
-6. Small touch-ups
+6. Small touch-ups - [ ]
