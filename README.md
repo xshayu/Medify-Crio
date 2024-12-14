@@ -24,7 +24,7 @@ Uses a mock API and localStorage to simulate actual booking.
     1. Faq Section - [x]
     2. Home page - [ ]
         1. Landing section - [x]
-        2. Swiper component - [ ]
+        2. Swiper component - [x]
         3. Other sections - [ ]
     3. Hospital Card - [ ]
     4. Hospitals page - [ ]

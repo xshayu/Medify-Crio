@@ -101,6 +101,13 @@ body {
     }
   }
 
+  #medicalSpecialists {
+    .doctor-frame {
+      background: linear-gradient(144.2deg, #E1F3FF 0%, #2AA7FF 100%);
+      border-radius: 250px 250px 4px 4px;
+    }
+  }
+
   .btn {
     background: var(--primary);
     line-height: 1.5;
@@ -116,6 +123,19 @@ body {
     cursor: pointer;
   }
 
+  [class^="pagination-"] {
+    position: static !important;
+    margin-top: 1rem;
+  }
+  
+  [class^="pagination-"] .swiper-pagination-bullet {
+    @apply w-2 h-2 mx-1 bg-gray-300 rounded-full cursor-pointer;
+  }
+  
+  [class^="pagination-"] .swiper-pagination-bullet-active {
+    @apply ring-2 ring-primary bg-primary;
+  }
+
 }
 
 @layer utilities {
@@ -127,4 +147,5 @@ body {
   .gradient-bg {
     background: linear-gradient(81deg, #E7F0FF 9.01%, rgba(232, 241, 255, 0.47) 89.11%);
   }
+
 }
