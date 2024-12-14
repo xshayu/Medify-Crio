@@ -21,7 +21,7 @@ Uses a mock API and localStorage to simulate actual booking.
     2. Booking Slots component - [x]
     3. Booking page - [x]
 5. Final CSS implementation - []
-    1. Faq Section - []
+    1. Faq Section - [x]
     2. Home page - []
     3. Hospitals page - []
     4. Hospital Card - []
