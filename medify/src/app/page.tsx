@@ -23,6 +23,46 @@ export default function Home() {
   ];
   const DOCTORS = [...rawDoctors, ...rawDoctors, ...rawDoctors];
 
+  const caringSrc1 = 'https://s3-alpha-sig.figma.com/img/655b/c5ee/65d5b807171dc49fec96d7ce51d323d1?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=iVxmtk~BxPsoghN6OoqGCDKFc1jh8LXmSAXuXZScnJ38yw5PsddWi5~9OEUs-8sht7vT~8C5~dTTXWrEkAfAlmaJP9idQDMA1DqZnLl9zTqtQi~VX2eikxzTJr~fPE62HRxTZvwukU1G1l~rHlGt-tZfGZjXGBJBxZ3S~bS9jw2xjklk7ftdZAiwXp5B-pbjNbIjXmyuLsvt3N7NPTt-fNGkjsxcDsbquHOfnTKtmz5SVsORy0kcuvs2PoOpFJeEcsgyE-LmLvhsEzdlmtJSQvQaNn0-BdwMQ3FADB1Ct2W-~7IYcDi9~AaW7txRSEASWApny9NF0Y01JqGJOyyPNQ__';
+  const caringSrc2 = 'https://s3-alpha-sig.figma.com/img/fc60/e3eb/123cc4f6b10a8de7f4969c5b21b3227b?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=gY6KWlZL2dTwbzV~17508BrJ-~XidIYOKl0WY2TfV1OoujGOWswOjIZiPDj2X1mJQ-T7I-R7bg2UGaDtmkXe1ywxxDGW3fpqYdFeH5eebxka98nKn9tNef7iueQiXuUu3R6OYf4rTkgpPSOdpVQ9otcmyyfyh0HOX21Fhh5xe1g74amai0PiK3Z~~TV3VWTzb3FvVKwadX0s-YyOUqnhfBsUGDr8dt0q31W7kMmJ62VoMpzuaYmkEbViKpnqlx33YQwaUCntWdzRSRQTulWqJChNs74SulXpkhCdwbIsiZAxpD4snWwTC7MvXdVugXY5N9tz~X~4Ol5bRWIsNEOKDg__';
+  const CARING = [
+    'Stay Updated About Your Health',
+    'Check Your Results Online',
+    'Manage Your Appointments'
+  ];
+
+  const NEWS = Array.from({length: 3}, (_, __) => ({
+    type: 'Medical',
+    date: 'March 31, 2022',
+    title: '6 Tips To Protect Your Mental Health When You’re Sick',
+    img: 'https://s3-alpha-sig.figma.com/img/fef4/882d/e0f1c8f91238e726af61b531dfa4b505?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U7-knFbouCNUboAAYyWFNs1rJ0Qs6ZQDdFqJNvAx~goIy8ApMuqiGvMIjdYJnhXys3c2yzcOz44mmRXYXXvXK7YeiTU6VJ1nbWZ9xgaC-98-VlXNHST4irJm01P8Hy~ZH-hCjS4~E0~ArIU1l-U-JADgDWLF65w8TCxPb0-wh3WORVoxAUifpRHh8OrF2Hsb17D-OS41VUZlgqdOJu678HuHPiIJAk4S6bn4fRgYJf39oHGgRPfC~ON2~gysLvIkfNXBeFZiSuSBgezRpEWJgygyaVdoAtj047NCPT5kFd2a1nZ~Z2r02bNSr3cKWfDq0s4KxGvkrICJGZw6Y-r2jQ__',
+    authorName: 'Rebecca Lee',
+    authorImg: 'https://s3-alpha-sig.figma.com/img/f2b1/95b8/8432b7bc2559a85010e594f78aacfc8c?Expires=1734912000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o0DBDsNn9-jt-V3sJ59gEj8t9lVhaTWn2CQSUHeluQAGnWCHgD3fsApRY7Kl~4DrrjSKlCPV2258P9awD36yO6VdionjvWYB-0Gi5SaiWROcjVlFc8uyGCx9JE0rUyNuRlQgoxVFhiIDncaFIAur8dAcEi9heMzg8Py8HOv5VkkFpHtfQxeBuLXFQ4Ygl-Xm92xiheLEfwka1FQ8rP0UmUCRB5DICu1RWvCaMQy5yvOUe801cULICRHudnfLu2mHPOhFbvflsuLPICKizDDwbJSLjEU~VO3QI2h0VsNnEv4tKsk-~rOSZeQlEzGYEvaJvERH8f81jt1cw-TgNmf-tA__'
+  }));
+
+  const fp = (title: string, subtitle: string, img: string, color: string) => ({ title, subtitle, img, color });
+  const FAMILY_POINTS = {
+    1: [
+      fp('5000+', 'Happy Patients', '/happyPatients.svg', '#EBF7FF'),
+      fp('1000+', 'Laboratories', '/happyLabs.svg', '#FFF7E6')
+    ],
+    2: [
+      fp('200+', 'Hospitals', '/happyHospitals.svg', '#FFF2F0'),
+      fp('700+', 'Expert Doctors', '/happyDoctors.svg', '#EBFAF1')
+    ]
+  };
+
+  const SPECIALISATION = [
+    nb('Dentistry', '/drugstore.svg'),
+    nb('Primary Care', '/stethescope.svg'),
+    nb('Cardiology', '/cardiology.svg'),
+    nb('MRI Resonance', '/mri.svg'),
+    nb('Blood Test', '/vial.svg'),
+    nb('Piscologist', '/shield.svg'),
+    nb('Laboratory', '/drugstore.svg'),
+    nb('X-Ray', '/xray.svg')
+  ];
+
   return (
     <>
 
@@ -64,6 +104,7 @@ export default function Home() {
         </div>
       </section>
 
+
       <section id="promoImages" className="section-x-padding pt-[15vh] md:pt-[40vh] pb-4">
         <SwiperCarousel
           slidesPerView={{ mobile: 1.5, desktop: 3 }}
@@ -81,6 +122,30 @@ export default function Home() {
             )
           }
         </SwiperCarousel>
+      </section>
+
+      <section id="specialisations" className="section-x-padding py-14 gradient-bg">
+          <h1 className="section-heading text-center">
+            Find By Specialisation
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 my-8">
+            {SPECIALISATION.map((spec, key) =>
+              <button
+                key={key}
+                className="specialisationCard flex flex-col gap-5
+                          items-center bg-white
+                          py-5 rounded-[10px]"
+                >
+                <img src={spec.img} alt={spec.title} />
+                <p className="text-lg text-[#ABB6C7]">{spec.title}</p>
+              </button>
+            )}
+          </div>
+          <div className="flex justify-center">
+            <button className="btn">
+              View All
+            </button>
+          </div>
       </section>
 
       <section id="medicalSpecialists" className="py-16">
@@ -103,6 +168,85 @@ export default function Home() {
               )
             }
           </SwiperCarousel>
+      </section>
+
+      <section id="patientCaring" className="section-x-padding gradient-bg py-14 flex flex-col md:flex-row">
+          <div className="relative md:w-[45%] md:mr-auto h-[50vh] md:h-[60vh]">
+            <img className="absolute top-0 right-0 border-[5px] w-[85%] md:w-[70%] h-auto object-cover border-white" src={caringSrc1} alt="patient caring 1" />
+            <img className="absolute bottom-0 left-0 border-[5px] w-[85%] md:w-[70%] h-auto object-cover border-white" src={caringSrc2} alt="patient caring 2" />
+          </div>
+          <div className="md:w-1/2">
+            <p className="text-primary">
+              HELPING PATIENTS FROM AROUND THE GLOBE!!
+            </p>
+            <h1 className="section-heading">Patient <span className="text-primary">Caring</span></h1>
+            <p className="text-[#77829D] leading-[29px] my-4">
+              Our goal is to deliver quality of care in a courteous, respectful, and compassionate manner. We hope you will allow us to care for you and strive to be the first and best choice for healthcare.
+            </p>
+            <ul className="flex flex-col gap-7">
+              {
+                CARING.map((care, key) =>
+                  <li key={key} className="flex items-center gap-4">
+                    <img src="/checkmark.svg" alt="Checkmark" />
+                    <span>{care}</span>
+                  </li>
+                )
+              }
+            </ul>
+          </div>
+      </section>
+
+      <section id="news" className="section-x-padding py-14">
+          <p className="text-primary text-center">Blog & News</p>
+          <h1 className="section-heading text-center">Read Our Latest News</h1>
+          <div className="mt-6 flex flex-col md:flex-row gap-6">
+            {
+              NEWS.map((news, key) =>
+                <article key={key} className="border border-[#00000012] rounded-[10px]">
+                  <img className="w-full aspect-square object-cover rounded-t-[10px]" src={news.img} alt={news.title} />
+                  <div className="p-5">
+                    <p className="text-[#77829D]">{news.type} | {news.date}</p>
+                    <h1 className="text-[18px] text-secondary mt-4">
+                      {news.title}
+                    </h1>
+                    <div className="flex items-center gap-2">
+                      <img className="rounded-full h-8 w-8" src={news.authorImg} alt={news.authorName} />
+                      <span className="text-secondary text-[17px]">{news.authorName}</span>
+                    </div>
+                  </div>
+                </article>
+              )
+            }
+          </div>
+      </section>
+
+      <section id="ourFamilies" className="section-x-padding py-14 gradient-bg flex flex-col md:flex-row items-center">
+        <div className="w-full md:w-1/2 md:pr-4">
+          <p className="text-primary">CARING FOR THE HEALTH OF YOU AND YOUR FAMILY.</p>
+          <h1 className="section-heading">Our Families</h1>
+          <p className="text-[17px] text-[#77829D] leading-[40.8px]">
+            We will work with you to develop individualised care plans, including management of chronic diseases. If we cannot assist, we can provide referrals or advice about the type of practitioner you require. We treat all enquiries sensitively and in the strictest confidence.
+          </p>
+        </div>
+        <div className="w-full md:w-1/2 flex gap-[35px]">
+          {
+            Object.values(FAMILY_POINTS).map((fam, key) => 
+              <div className={`flex flex-col gap-[35px] w-full ${key == 1 ? 'mt-[35px]' : 'mb-[35px]'}`} key={key}>
+                {
+                  fam.map((point, key) =>
+                    <div key={key} className="familyPointCard w-full flex flex-col items-center justify-between py-10 h-full bg-white">
+                      <div className="h-[100px] w-[100px] rounded-full flex items-center justify-center" style={{background: point.color}}>
+                        <img src={point.img} alt="Point" />
+                      </div>
+                      <p className="section-heading">{point.title}</p>
+                      <p className="text-lg text-[#77829D]">{point.subtitle}</p>
+                    </div>
+                  )
+                }
+              </div>
+            )
+          }
+        </div>
       </section>
 
       <FaqSection />
