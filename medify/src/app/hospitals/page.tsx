@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
-import { HospitalList } from './client';
-import { fetchHospitals } from './utils';
+import HospitalList from '@/components/HospitalList';
+import { fetchHospitals } from '@/helpers';
 import type { Hospital } from '@/models';
 import FaqSection from '@/components/FaqSection';
 

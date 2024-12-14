@@ -20,7 +20,7 @@ Uses a mock API and localStorage to simulate actual booking.
     1. Bookings set/get/all logic - [x]
     2. Booking Slots component - [x]
     3. Booking page - [x]
-5. Final CSS implementation - [ ]
+5. Final CSS implementation - [x]
     1. Faq Section - [x]
     2. Home page - [x]
         1. Landing section - [x]
@@ -28,4 +28,5 @@ Uses a mock API and localStorage to simulate actual booking.
         3. Other sections - [x]
     3. Hospitals page - [x] 
     4. Hospital Card - [x]
-    5. Bookings page - [ ]
+    5. Bookings page - [x]
+6. Small touch-ups

@@ -17,33 +17,37 @@ export default function HospitalCard(props: HospitalCardProps) {
 
     return (
         <article className="rounded-[15px] p-6 bg-white min-h-[--hospital-card-height]">
-            <div className="flex flex-col md:flex-row">
-                <div className="rounded-full bg-[#8CCFFF] flex items-center justify-center h-[124px] w-[124px]">
+            <div className={`flex flex-col md:flex-row ${showBookings ? '' : 'h-full'}`}>
+                <div className="rounded-full bg-[#8CCFFF] flex items-center justify-center h-[124px] w-[124px] aspect-square">
                     <img src={hospitalImgSrc} alt="Hospital Image" style={{height: '80px'}} />
                 </div>
-                <div className="flex flex-col gap-3 px-2">
-                    <h1 className="text-xl font-semibold text-primary">{info["Hospital Name"]}</h1>
-                    <p className="text-sm text-[#414146]">
-                        <b>{info.State}, {info.City}</b><br />
-                        {info["Hospital Type"]}<br />
-                        <span className="text-[#02A401] font-bold">FREE</span>
-                        <span className="line-through text-[#787887]">₹ 500</span>
-                        <span className="text-[#414146]">Consultation fee at clinic</span>
-                    </p>
-                    <hr className="border-dashed border-[#E8E8F0]" />
-                    <span className="py-1 px-2.5 bg-[#00A500] inline-flex items-center gap-1 rounded-[3.5px] w-fit">
-                        <img src="/thumbsUp.svg" alt="Likes" />
-                        <span className="text-sm opacity-50 text-white">5</span>
-                    </span>
+                <div className="flex flex-col justify-between px-2 h-auto">
+                    <div>
+                        <h1 className="text-xl font-semibold text-primary">{info["Hospital Name"]}</h1>
+                        <p className="text-sm text-[#414146] mt-3">
+                            <b>{info.State}, {info.City}</b><br />
+                            {info["Hospital Type"]}<br />
+                            <span className="text-[#02A401] font-bold">FREE</span>
+                            <span className="line-through text-[#787887]">₹ 500</span>
+                            <span className="text-[#414146]">Consultation fee at clinic</span>
+                        </p>
+                    </div>
+                    <div>
+                        <hr className="border-dashed border-[#E8E8F0] my-3" />
+                        <span className="py-1 px-2.5 bg-[#00A500] inline-flex items-center gap-1 rounded-[3.5px] w-fit">
+                            <img src="/thumbsUp.svg" alt="Likes" />
+                            <span className="text-sm opacity-50 text-white">5</span>
+                        </span>
+                    </div>
                 </div>
-                <div className={`flex gap-3.5 ${isBooking(info) ? 'flex-row' : 'flex-col items-center justify-end'}`}>
+                <div className={`flex gap-3.5 ml-auto ${isBooking(info) ? 'flex-row' : 'flex-col items-center justify-end'}`}>
                     {
                         isBooking(info) ?
                         <>
-                            <span className="py-2 px-3 text-primary border border-primary rounded-[3px]">
+                            <span className="py-2 px-3 text-sm text-primary border border-primary rounded-[3px] h-fit whitespace-nowrap">
                                 {info.Time}
                             </span>
-                            <span className="py-2 px-3 text-[#00A500] border border-[#00A500] rounded-[3px]">
+                            <span className="py-2 px-3 text-sm text-[#00A500] border border-[#00A500] rounded-[3px] h-fit whitespace-nowrap">
                                 {info.Date}
                             </span>
                         </>
