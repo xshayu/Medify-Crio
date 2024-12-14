@@ -67,7 +67,9 @@ export default function LocationSetterForm({ className = '', grow = false, onSub
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data: string[] = await response.json();
-            type == 'State' ?  setStateOptions(data) : setCityOptions(data);
+            if (type == 'State') {
+                setStateOptions(data);   
+            } else setCityOptions(data);
         } catch (error) {
             console.error("Fetch failed. Error:\n", error);
         }

@@ -20,7 +20,7 @@ interface day {
 };
 
 // Basically just generating random time slots for every day
-const getRandomSlots = (startTime: string, endTime: string, thisDate: string, allBookingIds: Set<string> | undefined, MyBookingsHelper: any) => {
+const getRandomSlots = (startTime: string, endTime: string, thisDate: string, allBookingIds: Set<string> | undefined, MyBookingsHelper: ReturnType<typeof MyBookings>) => {
     const slots = [];
     let currentTime = dayjs(startTime, 'h:mm A');
     const end = dayjs(endTime, 'h:mm A');
@@ -40,7 +40,7 @@ const getRandomSlots = (startTime: string, endTime: string, thisDate: string, al
     return slots;
 };
 
-const generateDays = (allBookingIds: Set<string> | undefined, MyBookingsHelper: any) => {
+const generateDays = (allBookingIds: Set<string> | undefined, MyBookingsHelper: ReturnType<typeof MyBookings>) => {
     const days: day[] = [];
     for (let i = 0; i < 7; i++) {
         const thisDayJs = dayjs().add(i, 'day');
