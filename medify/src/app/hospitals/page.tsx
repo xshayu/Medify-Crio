@@ -1,40 +1,27 @@
-'use client';
-
-import { Suspense, useState, useEffect } from 'react';
+import { Suspense } from 'react'; // , useState, useEffect
 import HospitalList from '@/components/HospitalList';
 import { fetchHospitals } from '@/helpers';
 import type { Hospital } from '@/models';
 import FaqSection from '@/components/FaqSection';
-import { useSearchParams } from 'next/navigation'
 
-function HospitalsInformation() {
-  const [initialHospitals, setInitialHospitals] = useState<Hospital[]>([]);
+type Params = Promise<{ slug: string }>
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>
 
-  const searchParams = useSearchParams();
-  const state = searchParams.get('state');
-  const city = searchParams.get('city');
+export default async function HospitalsPage(props: { params: Params, searchParams: SearchParams }) {
+  const { state, city } = await props.searchParams as { city: string, state: string };
+  let initialHospitals = [] as Hospital[];
 
-  const fetchInitialHospitals = async (state: string, city: string) => {
+  if (state?.length && city?.length) {
     const { hospitals } = await fetchHospitals(state, city);
-    setInitialHospitals(hospitals);
-  };
+    initialHospitals = hospitals;
+  }
 
-  useEffect(() => {
-    if (state && city) fetchInitialHospitals(state, city);
-  });
-
-  return (
-      <HospitalList initialHospitals={initialHospitals} initialState={state || ''} initialCity={city || ''} />
-  )
-};
-
-export default function HospitalsPage() {
   return (
     <>
     <Suspense fallback={
       <h1 className="text-center">Loading Hospitals...</h1>
     }>
-      <HospitalsInformation />
+      <HospitalList initialHospitals={initialHospitals} initialState={state || ''} initialCity={city || ''} />
     </Suspense>
     <FaqSection />
     </>

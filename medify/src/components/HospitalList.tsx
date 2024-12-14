@@ -3,7 +3,6 @@
 import LocationSetterForm from "@/components/LocationSetter";
 import HospitalCard from "@/components/HospitalCard";
 import { useState, useEffect } from "react";
-import { useRouter } from 'next/navigation';
 import { MyBookings, fetchHospitals } from "@/helpers";
 import type { Hospital } from "@/models";
 import type { FormEventHandler } from 'react';
@@ -17,7 +16,6 @@ interface Props {
 }
 
 export default function HospitalList({ initialHospitals, initialState = '', initialCity = '', areBookings = false }: Props) {
-    const router = useRouter();
     const [location, setLocation] = useState({ 
         state: initialState, 
         city: initialCity 
@@ -28,7 +26,6 @@ export default function HospitalList({ initialHospitals, initialState = '', init
     const [hospital, setHospital] = useState(''); // This is for searching within bookings page
 
     useEffect(() => {
-        console.log(list);
         if (!areBookings) {
             const allBookings = MyBookings().all();
             setBookingsIds(new Set(allBookings.map(b => b._id)) as Set<string>);
@@ -56,7 +53,7 @@ export default function HospitalList({ initialHospitals, initialState = '', init
             const params = new URLSearchParams();
             params.set('state', state);
             params.set('city', city);
-            router.push(`?${params.toString()}`, { scroll: false });
+            window.history.pushState(null, '', `?${params.toString()}`);
             setLocation({ state, city });
         };
 

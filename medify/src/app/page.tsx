@@ -1,6 +1,7 @@
 import LocationSetterForm from "@/components/LocationSetter";
 import FaqSection from "@/components/FaqSection";
 import SwiperCarousel from "@/components/SwiperCarousel";
+import Link from "next/link";
 
 export default function Home() {
   const nb = (title: string, img: string) => ({ title, img })
@@ -74,7 +75,7 @@ export default function Home() {
           <p className="text-xl text-[#5C6169]">
             Connect instantly with a 24x7 specialist or choose to video visit a particular doctor.
           </p>
-          <button className="btn mt-4">Find Centres</button>
+          <Link href="/hospitals" className="btn mt-4">Find Centres</Link>
         </div>
         
         <img id="doctorsImg" src={doctorsImgSrc} alt="Doctors for you" className="w-full md:w-1/2" />
