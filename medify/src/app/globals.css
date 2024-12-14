@@ -25,26 +25,6 @@ body {
 }
 
 @layer base {
-  .section-heading {
-    font-size: 24px;
-    line-height: 1.4;
-    font-weight: 600;
-    color: var(--secondary);
-    @screen md {
-      font-size: 48px;
-      line-height: 67px;
-    }
-  }
-  
-  .section-subtitle {
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 1.68;
-    color: var(--primary);
-    @screen md {
-      font-size: 16px;
-    }
-  }
 
 }
 
@@ -108,6 +88,27 @@ body {
     }
   }
 
+  .section-heading {
+    font-size: 24px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: var(--secondary);
+    @screen md {
+      font-size: 48px;
+      line-height: 67px;
+    }
+  }
+  
+  .section-subtitle {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.68;
+    color: var(--primary);
+    @screen md {
+      font-size: 16px;
+    }
+  }
+
   .btn {
     background: var(--primary);
     line-height: 1.5;
@@ -133,7 +134,7 @@ body {
   }
   
   [class^="pagination-"] .swiper-pagination-bullet-active {
-    @apply ring-2 ring-primary bg-primary;
+    @apply ring-1 ring-offset-4 ring-primary bg-primary;
   }
 
 }

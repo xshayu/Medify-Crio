@@ -84,7 +84,7 @@ export default function Home() {
       </section>
 
       <section id="medicalSpecialists" className="py-16">
-          <h1 className="section-heading text-center mb-8">
+          <h1 className="section-heading text-center mb-14">
             Our Medical Specalists
           </h1>
           <SwiperCarousel
