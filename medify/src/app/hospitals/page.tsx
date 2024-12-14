@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { HospitalList } from './client';
 import { fetchHospitals } from './utils';
 import type { Hospital } from '@/models';
+import FaqSection from '@/components/FaqSection';
 
 export default async function HospitalsPage({ searchParams }: { searchParams: { state?: string; city?: string }}) {
   let initialHospitals: Hospital[] = [];
@@ -14,11 +15,14 @@ export default async function HospitalsPage({ searchParams }: { searchParams: { 
   };
 
   return (
-    <section style={{paddingTop: 'var(--app-nav-height)'}}>
-      <h1>Hospitals</h1>
-      <Suspense fallback={<p>Loading hospitals...</p>}>
-        <HospitalList initialHospitals={initialHospitals} initialState={state || ''} initialCity={city || ''} />
-      </Suspense>
-    </section>
+    <>
+      <section style={{paddingTop: 'var(--app-nav-height)'}}>
+        <h1>Hospitals</h1>
+        <Suspense fallback={<p>Loading hospitals...</p>}>
+          <HospitalList initialHospitals={initialHospitals} initialState={state || ''} initialCity={city || ''} />
+        </Suspense>
+      </section>
+      <FaqSection />
+    </>
   )
 }

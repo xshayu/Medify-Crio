@@ -22,19 +22,25 @@ body {
 }
 
 @layer base {
-  .gradient-bg {
-    background: linear-gradient(81deg, #E7F0FF 9.01%, rgba(232, 241, 255, 0.47) 89.11%);
-  }
-
   .section-heading {
-    font-size: 48px;
-    line-height: 67px;
+    font-size: 24px;
+    line-height: 1.4;
     font-weight: 600;
     color: var(--secondary);
+    @screen md {
+      font-size: 48px;
+      line-height: 67px;
+    }
   }
-
-  .section-x-padding {
-    @apply px-3 md:px-[135px];
+  
+  .section-subtitle {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.68;
+    color: var(--primary);
+    @screen md {
+      font-size: 16px;
+    }
   }
 
   .btn {
@@ -50,3 +56,38 @@ body {
   }
 }
 
+@layer components {
+
+  #faqSection {
+    #imageFrame {
+      & > img {
+        box-shadow: 0px 15px 55px -10px rgba(0, 0, 0, 0.09);
+      }
+      #totalCount {
+        box-shadow: 0px 15px 35px -5px rgba(0, 0, 0, 0.07);
+        left: -10%;
+        bottom: 15%;
+      }
+      #grateful {
+        box-shadow: 0px 15px 25px 0px rgba(0, 0, 0, 0.06);
+        top: 20%;
+        right: -10%;
+      }
+
+    }
+  }
+
+
+
+}
+
+@layer utilities {
+
+  .section-x-padding {
+    @apply px-3 md:px-[135px];
+  }
+
+  .gradient-bg {
+    background: linear-gradient(81deg, #E7F0FF 9.01%, rgba(232, 241, 255, 0.47) 89.11%);
+  }
+}
