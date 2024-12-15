@@ -1,6 +1,7 @@
 'use client';
 import SearchIcon from "./SearchIcon";
 import { useEffect, useState } from "react";
+import { useLocationData } from "@/hooks/useLocationData";
 import Link from "next/link";
 
 interface LocationSetterFormProps {
@@ -50,38 +51,16 @@ function SearchSelectField({
 }
 
 export default function LocationSetterForm({ className = '', grow = false, onSubmit = () => {return}, isLink = false, initialState = '', initialCity = ''}: LocationSetterFormProps) {
-    const [stateOptions, setStateOptions] = useState<string[]>([]);
-    const [cityOptions, setCityOptions] = useState<string[]>([]);
+    const { stateOptions, cityOptions, fetchStates, fetchCities } = useLocationData();
     const [state, setState] = useState<string>(initialState);
     const [city, setCity] = useState<string>(initialCity);
 
-    const fetchOptions = async (type: LocationType = 'State') => {
-        const baseUrl = 'https://meddata-backend.onrender.com';
-        const api = type === 'City' 
-            ? `${baseUrl}/cities/${state}` 
-            : `${baseUrl}/states`;
-        
-        try {
-            const response = await fetch(api);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data: string[] = await response.json();
-            if (type == 'State') {
-                setStateOptions(data);   
-            } else setCityOptions(data);
-        } catch (error) {
-            console.error("Fetch failed. Error:\n", error);
-        }
-    };
-
-    useEffect(() => { // Fetching all states early on
-        fetchOptions();
+    useEffect(() => {
+        fetchStates();
     }, []);
 
     useEffect(() => {
-        if (state) fetchOptions('City');
-        else setCityOptions([]);  // Resetting city in case state is cleared
+        fetchCities(state);
     }, [state]);
 
     const onSelectChange = (value: string, type: LocationType = 'State') => {
