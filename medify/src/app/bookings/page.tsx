@@ -1,22 +1,13 @@
 'use client';
 
-import { useState, useEffect } from "react";
-import type { Booking } from "@/models";
-import { MyBookings } from "@/helpers";
+import { useBookings } from "@/stores/useBookingsStore";
 import HospitalList from "@/components/HospitalList";
 
 export default function BookingsPage() {
-    const MyBookingsHelper = MyBookings();
-    const [allBookings, setAllBookings] = useState<Booking[]>([]);
+  const { bookings } = useBookings()
 
-    useEffect(() => {
-        const allBookings = MyBookingsHelper.all();
-        console.log('a', { allBookings });
-        setAllBookings(allBookings);
-    }, []);
-
-    return (
-      <HospitalList initialHospitals={allBookings} areBookings={true}  />
-    );
-  }
+  return (
+    <HospitalList initialHospitals={bookings} areBookings={true} />
+  )
+}
   

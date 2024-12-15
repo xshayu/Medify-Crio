@@ -3,7 +3,7 @@
 import LocationSetterForm from "@/components/LocationSetter";
 import HospitalCard from "@/components/HospitalCard";
 import { useState, useEffect } from "react";
-import { MyBookings, fetchHospitals } from "@/helpers";
+import { fetchHospitals } from "@/helpers";
 import type { Hospital } from "@/models";
 import type { FormEventHandler } from 'react';
 import SearchIcon from "./SearchIcon";
@@ -22,15 +22,7 @@ export default function HospitalList({ initialHospitals, initialState = '', init
     });
     const [listLoading, setListLoading] = useState(false);
     const [list, setList] = useState<Hospital[]>(initialHospitals); // or bookings if areBookings
-    const [bookingIds, setBookingsIds] = useState<Set<string>>(new Set());
     const [hospital, setHospital] = useState(''); // This is for searching within bookings page
-
-    useEffect(() => {
-        if (!areBookings) {
-            const allBookings = MyBookings().all();
-            setBookingsIds(new Set(allBookings.map(b => b._id)) as Set<string>);
-        }
-    }, []);
 
     useEffect(() => { // filtering bookings
         if (areBookings) {
@@ -150,7 +142,7 @@ export default function HospitalList({ initialHospitals, initialState = '', init
                     />
                     <div className="flex flex-col gap-6 flex-grow overflow-hidden">
                         {list.map((hospital, index) => (
-                            <HospitalCard key={index} info={hospital} allBookingIds={bookingIds} />
+                            <HospitalCard key={index} info={hospital} />
                         ))}
                     </div>
                 </div>

@@ -5,7 +5,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 import type { Booking, HospitalCardProps } from "@/models";
 import { useState } from "react";
 import ArrowIcon from "./ArrowIcon";
-import { MyBookings } from "@/helpers";
+import { useBookings } from "@/stores/useBookingsStore";
 import { useRouter } from 'next/navigation';
 
 dayjs.extend(customParseFormat);
@@ -19,54 +19,49 @@ interface day {
     }
 };
 
-// Basically just generating random time slots for every day
-const getRandomSlots = (startTime: string, endTime: string, thisDate: string, allBookingIds: Set<string> | undefined, MyBookingsHelper: ReturnType<typeof MyBookings>) => {
-    const slots = [];
-    let currentTime = dayjs(startTime, 'h:mm A');
-    const end = dayjs(endTime, 'h:mm A');
-    
-    while (currentTime.isBefore(end) || currentTime.isSame(end)) {
-        const thisTime = currentTime.format('h:mm A');
-        if (
-            Math.random() < 0.4
-            &&
-            !allBookingIds?.has(MyBookingsHelper.getId({ Date: thisDate, Time: thisTime }))
-        ) {
-            slots.push(thisTime);
-        }
-        currentTime = currentTime.add(30, 'minute');
-    }
-    
-    return slots;
-};
-
-const generateDays = (allBookingIds: Set<string> | undefined, MyBookingsHelper: ReturnType<typeof MyBookings>) => {
-    const days: day[] = [];
-    for (let i = 0; i < 7; i++) {
-        const thisDayJs = dayjs().add(i, 'day');
-        const thisDate = thisDayJs.format('DD MMMM YYYY');
-
-        days.push({
-            date: thisDayJs,
-            slots: {
-                'Morning': getRandomSlots('8:00 AM', '11:30 AM', thisDate, allBookingIds, MyBookingsHelper),
-                'Afternoon': getRandomSlots('12:00 PM', '4:30 PM', thisDate, allBookingIds, MyBookingsHelper),
-                'Evening': getRandomSlots('5:00 PM', '9:00 PM', thisDate, allBookingIds, MyBookingsHelper)
-            }
-        });
-    }
-    return days;
-};
-
 export default function BookingSlots(props: HospitalCardProps) {
     const [dayIdx, setDayIdx] = useState(0); // Can go up to (7 - 1) = 6
+    const { createBooking, isSlotBooked } = useBookings()
     const router = useRouter();
 
     const { showBookings } = props;
 
-    const MyBookingsHelper = MyBookings();
+    // Basically just generating random time slots for every day
+    const getRandomSlots = (startTime: string, endTime: string, thisDate: string) => {
+        const slots = [];
+        let currentTime = dayjs(startTime, 'h:mm A');
+        const end = dayjs(endTime, 'h:mm A');
+        
+        while (currentTime.isBefore(end) || currentTime.isSame(end)) {
+            const thisTime = currentTime.format('h:mm A');
+            if (Math.random() < 0.4 && !isSlotBooked(thisDate, thisTime)) {
+                slots.push(thisTime);
+            }
+            currentTime = currentTime.add(30, 'minute');
+        }
+        
+        return slots;
+    };
 
-    const days = generateDays(props.allBookingIds, MyBookingsHelper); // generating all days from now to a week from now with random time slots
+    const generateDays = () => {
+        const days: day[] = [];
+        for (let i = 0; i < 7; i++) {
+            const thisDayJs = dayjs().add(i, 'day');
+            const thisDate = thisDayJs.format('DD MMMM YYYY');
+    
+            days.push({
+                date: thisDayJs,
+                slots: {
+                    'Morning': getRandomSlots('8:00 AM', '11:30 AM', thisDate),
+                    'Afternoon': getRandomSlots('12:00 PM', '4:30 PM', thisDate),
+                    'Evening': getRandomSlots('5:00 PM', '9:00 PM', thisDate)
+                }
+            });
+        }
+        return days;
+    };
+
+    const days = generateDays(); // generating all days from now to a week from now with random time slots
 
     const totalSlots = (day: day) => {
         const { Morning, Afternoon, Evening } = day.slots;
@@ -81,13 +76,13 @@ export default function BookingSlots(props: HospitalCardProps) {
         return result;
     };
 
-    const createBooking = (slot: string, day: dayjs.Dayjs) => {
+    const handleCreateBooking = (slot: string, day: dayjs.Dayjs) => {
         const newBooking: Booking = {
             ...props.info,
             Date: day.format('DD MMMM YYYY'),
             Time: slot
         };
-        MyBookingsHelper.create(newBooking);
+        createBooking(newBooking)
         router.push('/bookings');
     }
 
@@ -132,7 +127,7 @@ export default function BookingSlots(props: HospitalCardProps) {
                             <div className="flex items-center gap-3 md:gap-8 overflow-x-auto flex-grow blue-scrollbar">
                                 {days[dayIdx].slots[timing as 'Morning' | 'Afternoon' | 'Evening'].map((slot, key) =>
                                     <button
-                                        onClick={() => createBooking(slot, days[dayIdx].date)}
+                                        onClick={() => handleCreateBooking(slot, days[dayIdx].date)}
                                         title="Book Appointment"
                                         className="border border-primary rounded-[3px] text-primary text-xs md:text-sm py-2 px-3 whitespace-nowrap"
                                         key={key}

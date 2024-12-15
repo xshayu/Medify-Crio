@@ -7,7 +7,7 @@ import BookingSlots from "./BookingsSlots";
 export default function HospitalCard(props: HospitalCardProps) {
     const [showBookings, setShowBookings] = useState(false);
 
-    const { info, allBookingIds } = props;
+    const { info } = props;
     
     const isBooking = (info: Hospital | Booking): info is Booking => {
         return 'Date' in info;
@@ -62,7 +62,7 @@ export default function HospitalCard(props: HospitalCardProps) {
                 </div>
             </div>
             {!isBooking(info) &&
-                <BookingSlots info={info} allBookingIds={allBookingIds} showBookings={showBookings} />
+                <BookingSlots info={info} showBookings={showBookings} />
             }
         </article>
     )
