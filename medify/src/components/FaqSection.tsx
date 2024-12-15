@@ -20,13 +20,13 @@ export default function FaqSection() {
 
                 <div id="imageFrame" className="relative basis-[48%]">
                     <img src={imgUrl} className="w-full h-full border-[10px] border-white object-cover" />
-                    <div id="totalCount" className="absolute py-5 px-7 flex items-center gap-4 bg-white rounded-lg">
+                    <div id="totalCount" className="absolute py-3 px-5 md:py-5 md:px-7 flex items-center gap-4 bg-white rounded-lg">
                         <img src="/ominousSmiley.svg" alt="Smile" />
-                        <p className="text-[17px] leading-7 text-[#77829D]">
+                        <p className="text-sm md:text-[17px] leading-4 md:leading-7 text-[#77829D]">
                             <span className="font-semibold text-2xl text-secondary">84k+</span><br/>Happy Patients
                         </p>
                     </div>
-                    <div id="grateful" className="absolute h-[80px] w-[80px] rounded-full flex items-center justify-center bg-white">
+                    <div id="grateful" className="absolute h-[40px] md:h-[80px] aspect-square rounded-full flex items-center justify-center bg-white">
                         <img src="/grateful.svg" alt="Grateful" />
                     </div>
                 </div>

@@ -220,18 +220,18 @@ export default function Home() {
           </div>
       </section>
 
-      <section id="ourFamilies" className="section-x-padding py-14 gradient-bg flex flex-col md:flex-row items-center">
-        <div className="w-full md:w-1/2 md:pr-4">
+      <section id="ourFamilies" className="section-x-padding py-14 gradient-bg flex flex-col gap-8 md:gap-0 justify-between md:flex-row items-center">
+        <div className="w-full md:w-[45%] md:pr-4">
           <p className="text-primary">CARING FOR THE HEALTH OF YOU AND YOUR FAMILY.</p>
           <h1 className="section-heading">Our Families</h1>
           <p className="text-[17px] text-[#77829D] leading-[40.8px]">
             We will work with you to develop individualised care plans, including management of chronic diseases. If we cannot assist, we can provide referrals or advice about the type of practitioner you require. We treat all enquiries sensitively and in the strictest confidence.
           </p>
         </div>
-        <div className="w-full md:w-1/2 flex gap-[35px]">
+        <div id="happyCardsContainer" className="w-full md:w-[45%] flex">
           {
             Object.values(FAMILY_POINTS).map((fam, key) => 
-              <div className={`flex flex-col gap-[35px] w-full ${key == 1 ? 'mt-[35px]' : 'mb-[35px]'}`} key={key}>
+              <div className={`flex flex-col gap-[--card-gap] w-full ${key == 1 ? 'mt-[--card-gap]' : 'mb-[--card-gap]'}`} key={key}>
                 {
                   fam.map((point, key) =>
                     <div key={key} className="familyPointCard w-full flex flex-col items-center justify-between py-10 h-full bg-white">

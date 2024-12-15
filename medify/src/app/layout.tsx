@@ -151,7 +151,7 @@ export default function RootLayout({
                   <span className="flex items-center justify-center h-full aspect-square border-r border-[#B4B4BE4D]">
                     +91
                   </span>
-                  <input name="phone" placeholder="Enter phone number" className="pl-[20px] w-full" />
+                  <input name="phone" type="tel" placeholder="Enter phone number" className="pl-[20px] w-full" />
                 </div>
                 <button className="btn">Send SMS</button>
               </ClientForm>

@@ -100,7 +100,7 @@ export default function BookingSlots(props: HospitalCardProps) {
                 <div className="flex items-center gap-2">
                     <button
                         onClick={() => setDayIdx(Math.max(0, dayIdx - 1))}
-                        className="flex items-center justify-center rounded-full border border-[#E0E0E4] h-12 aspect-square"
+                        className="flex items-center justify-center rounded-full border border-[#E0E0E4] h-6 md:h-12 aspect-square"
                     >
                         <ArrowIcon fill="var(--primary)" className="transform -scale-x-100" />
                     </button>
@@ -118,7 +118,7 @@ export default function BookingSlots(props: HospitalCardProps) {
                     </div>
                     <button
                         onClick={() => setDayIdx(Math.min(6, dayIdx + 1))}
-                        className="flex items-center justify-center rounded-full border border-[#E0E0E4] h-12 aspect-square"
+                        className="flex items-center justify-center rounded-full border border-[#E0E0E4] h-6 md:h-12 aspect-square"
                     >
                         <ArrowIcon fill="var(--primary)" />
                     </button>
